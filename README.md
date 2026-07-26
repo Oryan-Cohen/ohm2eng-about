@@ -1,6 +1,5 @@
 # OHM2ENG
 
-![Node](https://img.shields.io/badge/node-%E2%89%A5%2022-3c873a)
 ![License](https://img.shields.io/badge/license-all%20rights%20reserved-b0413e)
 ![i18n](https://img.shields.io/badge/i18n-Hebrew%20%7C%20English-4a7fb5)
 ![Runs on](https://img.shields.io/badge/runs%20on-Cloudflare%20Workers-f38020)
@@ -9,6 +8,8 @@
 > **Draw a circuit → press Run → get real DC / AC / transient / Bode / sweep results** — plus full engineering & computer-science courses built on real emulators.
 
 🌐 **Live:** [ohm2eng.com](https://ohm2eng.com)
+
+*A public overview of OHM2ENG. The full project source is private — access is available on request (see [Status](#status)).*
 
 ![OHM2ENG — a diode rectifier circuit simulated live, with the oscilloscope showing input vs. rectified output](docs/screenshot.png)
 
@@ -87,7 +88,7 @@ It's **live and free to start** — open **[ohm2eng.com](https://ohm2eng.com)** 
 ## Status
 
 > **This repository is only a condensed overview — a summary of what OHM2ENG is.**
-> The **complete project**, documented in far greater detail, lives in a separate **private repository**: the full source code (client, Cloudflare Worker solver, all course content and emulators), the in-depth engineering handbook, the CI pipeline, and the full test suites — everything. Access can be granted on request.
+> The **complete project**, documented in far greater detail, lives in a separate **private repository**: the full source code (client, Cloudflare Worker solver, all course content and emulators), the in-depth engineering handbook, the CI pipeline, and the full test suites — everything. Access to the full private repository can be granted on request — feel free to reach out (for example, via LinkedIn).
 
 The application is live at **[ohm2eng.com](https://ohm2eng.com)** — no setup required. This is a proprietary project — see [LICENSE](LICENSE).
 
