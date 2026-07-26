@@ -49,6 +49,8 @@ The single most important architectural fact:
 
 The solver is a dense **Modified Nodal Analysis (MNA)** engine with **Newton-Raphson** iteration and full device models, given a bounded CPU budget on the Worker. Purely digital circuits are the exception — they evaluate client-side (boolean logic, no differential equations to solve).
 
+**→ For a deeper look at the design, read [ARCHITECTURE.md](ARCHITECTURE.md).**
+
 ---
 
 ## Tech stack
