@@ -86,8 +86,9 @@ It's **live and free to start** — open **[ohm2eng.com](https://ohm2eng.com)** 
 
 ## Status
 
-This repository is the **public overview** of OHM2ENG. The application is live at **[ohm2eng.com](https://ohm2eng.com)** — no setup required.
+> **This repository is only a condensed overview — a summary of what OHM2ENG is.**
+> The **complete project**, documented in far greater detail, lives in a separate **private repository**: the full source code (client, Cloudflare Worker solver, all course content and emulators), the in-depth engineering handbook, the CI pipeline, and the full test suites — everything. Access can be granted on request.
 
-The full source code (client, Cloudflare Worker solver, courses, and test suites) is maintained in a **private repository**. This is a proprietary project — see [LICENSE](LICENSE).
+The application is live at **[ohm2eng.com](https://ohm2eng.com)** — no setup required. This is a proprietary project — see [LICENSE](LICENSE).
 
 © OHM2ENG. Built with vanilla ES6, HTML5 Canvas, and Cloudflare Workers.
