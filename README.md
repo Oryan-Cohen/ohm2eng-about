@@ -76,6 +76,12 @@ The solver is a dense **Modified Nodal Analysis (MNA)** engine with **Newton-Rap
 
 ---
 
+## Try it
+
+It's **live and free to start** — open **[ohm2eng.com](https://ohm2eng.com)** in any browser, with nothing to install. Jump straight in as a guest, or create an account to save your progress across devices and follow the full course tracks. Works on desktop and tablet, in English or Hebrew.
+
+---
+
 ## Status
 
 This repository is the **public overview** of OHM2ENG. The application is live at **[ohm2eng.com](https://ohm2eng.com)** — no setup required.
