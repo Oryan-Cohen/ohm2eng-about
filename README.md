@@ -54,6 +54,16 @@ The solver is a dense **Modified Nodal Analysis (MNA)** engine with **Newton-Rap
 
 ---
 
+## Optional: solve the same exercise on real hardware
+
+Every exercise is fully solvable in simulation, and always will be. But a student who wants to can **build the circuit on a breadboard**, plug a small USB measurement card into the computer, and answer the *same* task with *real* measurements.
+
+The point is that nothing about the exercise changes. The grader does not know which arena it is in: a real measurement is fed into the exact context the checker already consumes, so the same question, checked the same way, is now answered by a physical circuit. There is also a **compare** view that plots the simulated and measured waveforms on one shared axis and names the difference — gain, offset, or genuine shape — which is where the interesting learning actually happens.
+
+Design rules worth stating: the bridge **informs, it never locks** (no exercise becomes unsolvable without a board); the instrument is treated as **untrusted input** and validated at one boundary; trusting a measurement requires a **three-step calibration** proved against a reference on the card itself, not against the student's own wiring; and the whole feature stays **hidden from students who have never connected a board**, so nobody meets it before it means anything to them.
+
+---
+
 ## Tech stack
 
 | Layer | Technology |
@@ -73,6 +83,7 @@ The solver is a dense **Modified Nodal Analysis (MNA)** engine with **Newton-Rap
 - Draggable virtual instruments with FFT, Bode, and cursor measurements
 - **Comprehensive computer-architecture course** — its first part builds a computer from a single NAND gate up (Hack / VM / Jack), then it extends well beyond into RISC-V, datapath & control, pipelining, caches, and virtual memory; student code is actually executed and graded, not pattern-matched
 - **Job-interview prep** — a career center of graded EE/CS questions
+- **Optional hardware bridge** — build the circuit for real, read it over USB, and answer the same graded exercise with real measurements; a compare view puts the simulated and measured waveforms on one axis
 - SPICE netlist import / export
 - Electrical Rule Check (ERC)
 - Spaced-repetition mastery tracking + two-way cloud progress sync

@@ -54,6 +54,25 @@ Purely **digital** circuits (logic gates only, no analog) skip the numerical sol
 
 ---
 
+## The hardware bridge — the same exercise, measured for real
+
+An optional third execution arena sits beside the server solver and the in-browser digital evaluator: **a real circuit on a real breadboard**, read through a small USB measurement card (an ESP32 driving an 8-channel ADC, over Web Serial).
+
+The constraint that shaped everything: **the grading logic must not know which arena it is in**. A measurement is mapped back onto the exact context an exercise's checker already consumes, keyed by component, so every existing check works unchanged against real voltages. Switching a task from *simulation* to *hardware* swaps the **producer** of the numbers — never the question, and never the standard it is held to.
+
+Four rules hold the layer together:
+
+- **The transport is injected.** Nothing above the device abstraction knows a serial port exists — which is why the whole stack was built and tested against a mock driver *before* any board existed.
+- **The instrument is untrusted input.** Every number and string crossing the driver boundary is range-checked and scrubbed once, at that boundary — including the converter's own claims about its resolution and reference.
+- **It informs, it never locks.** No exercise becomes unsolvable because a board is missing, disconnected mid-answer, or uncalibrated. Simulation is always there.
+- **"Not checked" is not "failed".** Calibration reports a distinct *blocked* state rather than a red ✗ — a false failure sends a student hunting a fault that isn't theirs.
+
+Trusting a measurement takes a three-step proof: the link is alive, the ADC chain reads a reference **on the card itself** (never one wired by the student — otherwise a wiring mistake masquerades as a broken card, and vice versa), and a dedicated channel confirms the card is really attached to the breadboard. Only then does the indicator go green.
+
+A **compare** view then draws the simulated and the measured waveform on **one shared vertical axis** — two auto-scaled axes would make a 5 V square wave and 50 mV of noise look identical — aligns them by correlation before judging, and names the gap as gain, offset, or genuine shape.
+
+---
+
 ## The learning platform
 
 Beyond the simulator, OHM2ENG runs **genuine emulators** for its computer-architecture course — a Hack CPU, a RISC-V core, a VM translator, and a Jack compiler. Student code is **actually executed and checked against expected behavior**, not pattern-matched against a string. Grading that must not be guessable is verified server-side.
