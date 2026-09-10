@@ -13,7 +13,7 @@
 
 ![OHM2ENG - a diode rectifier circuit simulated live, with the oscilloscope showing input vs. rectified output](docs/screenshot.png)
 
-<sub>*A half-wave rectifier running live - the oscilloscope shows the input sine (red) against the rectified output, solved server-side and drawn back in the browser.*</sub>
+<sub>*A half-wave rectifier running live - the oscilloscope shows the input sine (blue) against the rectified output (red), solved server-side and drawn back in the browser.*</sub>
 
 ---
 
@@ -35,9 +35,9 @@ OHM2ENG does two big things:
 
 2. **An electrical-engineering & CS learning platform.** A 16-lecture digital-circuits course; a comprehensive **computer-architecture course** whose *first part* is building a working computer from a single NAND logic gate up (through **Hack**, a **VM**, and a **Jack compiler**), and which then goes well beyond that foundation into **RISC-V, datapath & control, pipelining, caches, and virtual memory** - with genuine emulators at every layer; **job-interview prep** (a career center of graded EE/CS questions); and interactive labs - all wrapped in a Leitner **spaced-repetition** scheduler, cloud progress sync, and plan tiers (Guest / Pro).
 
-![Building an XOR gate from NOT, AND, and OR gates in the computer-architecture course](docs/screenshot-logic.png)
+![Building an XOR gate from NOT, AND, and OR gates in the computer-architecture course, with the live HDL preview showing the chip the drawing describes](docs/screenshot-logic.png)
 
-<sub>*The computer-architecture course in action: build an XOR gate from NOT / AND / OR primitives, then have it graded against its full truth table - one step on the path from a single logic gate up to a working CPU.*</sub>
+<sub>*The computer-architecture course in action: build an XOR gate from NOT / AND / OR primitives, watch the live HDL preview write the `CHIP Xor` definition as you wire it, then have it graded against its full truth table - one step on the path from a single logic gate up to a working CPU.*</sub>
 
 ---
 
