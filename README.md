@@ -15,6 +15,12 @@
 
 <sub>*A half-wave rectifier running live - the oscilloscope shows the input sine (blue) against the rectified output (red), solved server-side and drawn back in the browser.*</sub>
 
+### The whole loop, end to end
+
+![A guided lab: the task opens, a bridge-rectifier power supply is built and wired, Run solves it, the oscilloscope shows the AC input against the smoothed DC output, and the lab grades the result](docs/demo-lab-bridge.gif)
+
+<sub>*One lab from start to finish. The task asks for a DC power supply; a transformer, a diode bridge, a smoothing capacitor and a load get wired up; **Run** solves the transient server-side; channel B (blue) reads the AC input while channel A (red) reads the rectified, smoothed output; and **Check** grades the circuit against the lab's own pass criteria - average DC above 5.5 V, ripple under 1.3 V, no negative excursion - and explains why it passed. Nothing here is mocked: the 7.23 V average and 0.58 V ripple come out of the solver.*</sub>
+
 ---
 
 ## Purpose
@@ -70,7 +76,7 @@ Design rules worth stating: the bridge **informs, it never locks** (no exercise 
 |-------|-----------|
 | **Client** | Vanilla ES6 modules + HTML5 Canvas (no framework) |
 | **Server** | Cloudflare Worker - Hono framework, TypeScript |
-| **Solver** | Dense MNA + Newton-Raphson (~5,600 lines, isomorphic client/server) |
+| **Solver** | Dense MNA + Newton-Raphson (~7,000 lines, isomorphic client/server) |
 | **Hosting** | Cloudflare Pages + Worker |
 | **i18n** | Hebrew / English |
 
@@ -78,12 +84,13 @@ Design rules worth stating: the bridge **informs, it never locks** (no exercise 
 
 ## Highlights
 
-- **171 components** across **19 categories** in the parts library
+- **173 components** across **19 categories** in the parts library
 - Real device physics: BJT (Ebers-Moll), MOSFET (Shichman-Hodges), diodes, thyristors, op-amps (soft-saturation + oscillator modes)
 - Draggable virtual instruments with FFT, Bode, and cursor measurements
 - **Comprehensive computer-architecture course** - its first part builds a computer from a single NAND gate up (Hack / VM / Jack), then it extends well beyond into RISC-V, datapath & control, pipelining, caches, and virtual memory; student code is actually executed and graded, not pattern-matched
 - **Job-interview prep** - a career center of graded EE/CS questions
 - **Optional hardware bridge** - build the circuit for real, read it over USB, and answer the same graded exercise with real measurements; a compare view puts the simulated and measured waveforms on one axis
+- **3,600+ automated tests** - unit, Worker route, and browser end-to-end
 - SPICE netlist import / export
 - Electrical Rule Check (ERC)
 - Spaced-repetition mastery tracking + two-way cloud progress sync
