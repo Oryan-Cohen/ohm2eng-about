@@ -25,7 +25,11 @@
 
 ## Purpose
 
-**OHM2ENG exists to be the single place a student needs to succeed - everything, in one browser tab, instead of scattered across a dozen separate tools.** It brings together a canvas for building real circuits with advanced virtual instruments, structured courses (from digital circuits to a comprehensive computer-architecture track that *begins* by building a computer from a single NAND gate and continues on into RISC-V and modern CPU internals), job-interview preparation, and an automatic grading system that checks a student's work against the correct answer. The philosophy is *learn by doing, then get verified*: draw it, run it, build it - and have it graded - with progress tracking and spaced repetition keeping you on course. A teaching platform first, and a serious circuit simulator second.
+**OHM2ENG exists to be the single place a student needs, instead of a dozen scattered tools.**
+
+The philosophy is *learn by doing, then get verified*. Every exercise ends in a grade produced by running the student's own work - solving their circuit, or executing their code - never by matching it against a stored answer.
+
+A teaching platform first, and a serious circuit simulator second.
 
 ---
 
@@ -39,7 +43,7 @@ OHM2ENG does two big things in the browser, and a third that reaches outside it:
 
 <sub>*A guided lab: build an RC low-pass filter, then run an AC sweep on the Bode plotter and watch the gain roll off past its ~159 Hz cutoff - the task panel gives you the theory and checks your circuit.*</sub>
 
-2. **An electrical-engineering & CS learning platform.** A 16-lecture digital-circuits course; a comprehensive **computer-architecture course** whose *first part* is building a working computer from a single NAND logic gate up (through **Hack**, a **VM**, and a **Jack compiler**), and which then goes well beyond that foundation into **RISC-V, datapath & control, pipelining, caches, and virtual memory** - with genuine emulators at every layer; **job-interview prep** (a career center of graded EE/CS questions); and interactive labs - all wrapped in a Leitner **spaced-repetition** scheduler, cloud progress sync, and plan tiers (Guest / Pro).
+2. **An electrical-engineering & CS learning platform.** A 16-lecture digital-circuits course; a comprehensive **computer-architecture course** whose *first part* is building a working computer from a single NAND logic gate up (through **Hack**, a **VM**, and a **Jack compiler**), and which then goes well beyond that foundation into **RISC-V, datapath & control, pipelining, caches, and virtual memory** - with genuine emulators at every layer. Chip levels are *drawn*; from project 4 on they are *written* - the student types real **Hack assembly** and later **RISC-V**, and the emulator runs the program to decide whether it passed. Alongside it: **job-interview prep** (a career center of graded EE/CS questions); and interactive labs - all wrapped in a Leitner **spaced-repetition** scheduler, cloud progress sync, and plan tiers (Guest / Pro).
 
 ![Building an XOR gate from NOT, AND, and OR gates in the computer-architecture course, with the live HDL preview showing the chip the drawing describes](docs/screenshot-logic.png)
 
