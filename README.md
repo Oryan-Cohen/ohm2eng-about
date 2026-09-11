@@ -5,7 +5,7 @@
 ![Runs on](https://img.shields.io/badge/runs%20on-Cloudflare%20Workers-f38020)
 
 > A browser-based electrical circuit simulator with a deep, interactive education layer.
-> **Draw a circuit → press Run → get real DC / AC / transient / Bode / sweep results** - plus full engineering & computer-science courses built on real emulators.
+> **Draw a circuit → press Run → get real DC / AC / transient / Bode / sweep results** - plus full engineering & computer-science courses built on real emulators, and an optional USB bridge that answers the very same exercise from a real board.
 
 🌐 **Live:** [ohm2eng.com](https://ohm2eng.com)
 
@@ -31,7 +31,7 @@
 
 ## What is this?
 
-OHM2ENG does two big things:
+OHM2ENG does two big things in the browser, and a third that reaches outside it:
 
 1. **Analog + digital circuit simulator.** Place components on an HTML5 canvas - resistors, transistors, op-amps, sources, logic gates, ICs - wire them up, hit **Run**, and read results back through real virtual instruments: **oscilloscope, multimeter, Bode plotter, logic analyzer, curve tracer**.
 
@@ -44,6 +44,10 @@ OHM2ENG does two big things:
 ![Building an XOR gate from NOT, AND, and OR gates in the computer-architecture course, with the live HDL preview showing the chip the drawing describes](docs/screenshot-logic.png)
 
 <sub>*The computer-architecture course in action: build an XOR gate from NOT / AND / OR primitives, watch the live HDL preview write the `CHIP Xor` definition as you wire it, then have it graded against its full truth table - one step on the path from a single logic gate up to a working CPU.*</sub>
+
+![An interview question in the career centre: a non-inverting amplifier on the canvas, the meter readings hidden, and a typed answer graded correct with a follow-up question](docs/screenshot-career.png)
+
+<sub>*Interview prep, graded. The question gives the circuit and asks for a number; the meter readings stay **hidden** while you answer, so the value has to be reasoned out rather than read off. Answer correctly and the solver's own value is revealed next to it - along with the interviewer's follow-up question.*</sub>
 
 ---
 
