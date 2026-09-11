@@ -49,9 +49,9 @@ OHM2ENG does two big things in the browser, and a third that reaches outside it:
 
 <sub>*The computer-architecture course in action: build an XOR gate from NOT / AND / OR primitives, watch the live HDL preview write the `CHIP Xor` definition as you wire it, then have it graded against its full truth table - one step on the path from a single logic gate up to a working CPU.*</sub>
 
-![An interview question in the career centre: a non-inverting amplifier on the canvas, the meter readings hidden, and a typed answer graded correct with a follow-up question](docs/screenshot-career.png)
+![An interview question in the career centre: an op-amp integrator, answered blind, with the oscilloscope revealed afterwards showing the triangle wave the answer predicted](docs/screenshot-career.png)
 
-<sub>*Interview prep, graded. The question gives the circuit and asks for a number; the meter readings stay **hidden** while you answer, so the value has to be reasoned out rather than read off. Answer correctly and the solver's own value is revealed next to it - along with the interviewer's follow-up question.*</sub>
+<sub>*Interview prep, graded. An op-amp integrator fed a square wave: the question asks for the time constant, then for the peak-to-peak swing of the output - and the oscilloscope stays **hidden** while you answer, so the numbers have to be derived rather than read off. Answer both correctly and the scope opens on the triangle wave you just predicted, followed by the interviewer's next question.*</sub>
 
 ---
 
