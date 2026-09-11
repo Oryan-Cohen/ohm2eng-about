@@ -43,13 +43,17 @@ OHM2ENG does two big things in the browser, and a third that reaches outside it:
 
 <sub>*A guided lab: build an RC low-pass filter, then run an AC sweep on the Bode plotter and watch the gain roll off past its ~159 Hz cutoff - the task panel gives you the theory and checks your circuit.*</sub>
 
-2. **An electrical-engineering & CS learning platform.** A 16-lecture digital-circuits course; a comprehensive **computer-architecture course** whose *first part* is building a working computer from a single NAND logic gate up (through **Hack**, a **VM**, and a **Jack compiler**), and which then goes well beyond that foundation into **RISC-V, datapath & control, pipelining, caches, and virtual memory** - with genuine emulators at every layer. Chip levels are *drawn*; from project 4 on they are *written* - the student types real **Hack assembly** and later **RISC-V**, and the emulator runs the program to decide whether it passed. Alongside it: **job-interview prep** (a career center of graded EE/CS questions); and interactive labs - all wrapped in a Leitner **spaced-repetition** scheduler, cloud progress sync, and plan tiers (Guest / Pro).
+2. **An electrical-engineering & CS learning platform.** A 16-lecture digital-circuits course; a comprehensive **computer-architecture course** whose *first part* is building a working computer from a single NAND logic gate up (through **Hack**, a **VM**, and a **Jack compiler**), and which then goes well beyond that foundation into **RISC-V, datapath & control, pipelining, caches, and virtual memory** - with genuine emulators at every layer.
+
+   Chip levels are *drawn*; from project 4 on they are *written* - the student types real **Hack assembly** and later **RISC-V**, and the emulator runs the program to decide whether it passed.
+
+   Alongside it: **job-interview prep** (a career center of graded EE/CS questions); and interactive labs - all wrapped in a Leitner **spaced-repetition** scheduler, cloud progress sync, and plan tiers (Guest / Pro).
 
 ![Building an XOR gate from NOT, AND, and OR gates in the computer-architecture course, with the live HDL preview showing the chip the drawing describes](docs/screenshot-logic.png)
 
 <sub>*The computer-architecture course in action: build an XOR gate from NOT / AND / OR primitives, watch the live HDL preview write the `CHIP Xor` definition as you wire it, then have it graded against its full truth table - one step on the path from a single logic gate up to a working CPU.*</sub>
 
-![An interview question in the career centre: an op-amp integrator, answered blind, with the oscilloscope revealed afterwards showing the triangle wave the answer predicted](docs/screenshot-career.png)
+![An interview question in the career center: an op-amp integrator, answered blind, with the oscilloscope revealed afterwards showing the triangle wave the answer predicted](docs/screenshot-career.png)
 
 <sub>*Interview prep, graded. An op-amp integrator fed a square wave: the question asks for the time constant, then for the peak-to-peak swing of the output - and the oscilloscope stays **hidden** while you answer, so the numbers have to be derived rather than read off. Answer both correctly and the scope opens on the triangle wave you just predicted, followed by the interviewer's next question.*</sub>
 
