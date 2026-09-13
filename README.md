@@ -17,7 +17,7 @@
 
 ### The whole loop, end to end
 
-![A guided lab: the task opens, a bridge-rectifier power supply is built and wired, Run solves it, the oscilloscope shows the AC input against the smoothed DC output, and the lab grades the result](docs/demo-lab-bridge.gif)
+![A guided lab: the task opens, a bridge-rectifier power supply is built and wired, Run solves it, the oscilloscope shows the AC input against the smoothed DC output, and the lab grades the result](docs/demo-lab-bridge-v2.gif)
 
 <sub>*One lab from start to finish. The task asks for a DC power supply; a transformer, a diode bridge, a smoothing capacitor and a load get wired up; **Run** solves the transient server-side; channel B (blue) reads the AC input while channel A (red) reads the rectified, smoothed output; and **Check** grades the circuit against the lab's own pass criteria - average DC above 5.5 V, ripple under 1.3 V, no negative excursion - and explains why it passed. Nothing here is mocked: the 7.23 V average and 0.58 V ripple come out of the solver.*</sub>
 
