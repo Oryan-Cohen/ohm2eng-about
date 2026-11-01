@@ -74,11 +74,32 @@ The solver is a dense **Modified Nodal Analysis (MNA)** engine with **Newton-Rap
 
 ## Optional: solve the same exercise on real hardware
 
-Every exercise is fully solvable in simulation, and always will be. But a student who wants to can **build the circuit on a breadboard**, plug a small USB measurement card into the computer, and answer the *same* task with *real* measurements.
+Every exercise is fully solvable in simulation, and always will be. But a student who wants to can **build the circuit on a breadboard**, plug the **OHM2ENG card** (below) into the computer, and answer the *same* task with *real* measurements.
 
 The point is that nothing about the exercise changes. The grader does not know which arena it is in: a real measurement is fed into the exact context the checker already consumes, so the same question, checked the same way, is now answered by a physical circuit. There is also a **compare** view that plots the simulated and measured waveforms on one shared axis and names the difference - gain, offset, or genuine shape - which is where the interesting learning actually happens.
 
 Design rules worth stating: the bridge **informs, it never locks** (no exercise becomes unsolvable without a board); the instrument is treated as **untrusted input** and validated at one boundary; trusting a measurement requires a **three-step calibration** proved against a reference on the card itself, not against the student's own wiring; and the whole feature stays **hidden from students who have never connected a board**, so nobody meets it before it means anything to them.
+
+### The card
+
+<p align="center">
+  <img src="docs/hil-card-3d.jpg" width="60%" alt="3D render of the assembled OHM2ENG card: the controller module and USB-C port at the top left, two power converters at the top right, and the 20-pin breadboard connector on the bottom edge">
+  <img src="docs/hil-card-top-layer.jpg" width="37%" alt="The top copper layer of the OHM2ENG card: copper with its ground pour in red, silkscreen in yellow">
+</p>
+
+<sub>*The OHM2ENG card as ordered - the assembled board and its top copper layer, rendered from the design files. A photo of the real one follows bring-up.*</sub>
+
+One USB card in place of a lab bench. It **measures** the student's breadboard and **feeds** it:
+
+- a **4-channel oscilloscope and voltmeter** - ±33 V, auto-ranging down to 4 mV steps
+- a **function generator** - sine, triangle or square, up to 100 kHz
+- a **programmable DC supply** - current-limited, so a short is harmless
+- a **current meter**, plus **resistance** and **capacitance** readings
+- **5 digital lines**, each an input or an output
+
+All of it over the one cable that also powers the card - no bench supply, no driver to install. The student builds on a breadboard, runs jumper wires from a single labelled connector, flips the task from *Simulation* to *Hardware*, and the app works out from the drawn circuit which output drives what. The outputs stay disconnected until the card is ready, so nothing reaches the breadboard by accident.
+
+> **Status:** designed and checked; the first boards are in fabrication (November 2026). The software side is complete and tested against a model of the card.
 
 ---
 
@@ -101,7 +122,7 @@ Design rules worth stating: the bridge **informs, it never locks** (no exercise 
 - Draggable virtual instruments with FFT, Bode, and cursor measurements
 - **Comprehensive computer-architecture course** - its first part builds a computer from a single NAND gate up (Hack / VM / Jack), then it extends well beyond into RISC-V, datapath & control, pipelining, caches, and virtual memory; student code is actually executed and graded, not pattern-matched
 - **Job-interview prep** - a career center of graded EE/CS questions
-- **Optional hardware bridge** - build the circuit for real, read it over USB, and answer the same graded exercise with real measurements; a compare view puts the simulated and measured waveforms on one axis
+- **Optional hardware bridge + the OHM2ENG card** - one USB card that is a scope, generator, DC supply and meter: build the circuit for real and answer the same graded exercise with real measurements; a compare view puts the simulated and measured waveforms on one axis
 - **3,600+ automated tests** - unit, Worker route, and browser end-to-end
 - SPICE netlist import / export
 - Electrical Rule Check (ERC)
