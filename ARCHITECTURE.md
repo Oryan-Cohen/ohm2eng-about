@@ -29,7 +29,7 @@ The single most important decision in the system:
    default (small circuits)  large circuits       optional, USB-attached
 ```
 
-**One engine, two homes.** The solver is a single module that runs **unchanged** in the browser *and* on the Worker. Any circuit up to 30 nodes is solved right in the page - no network round-trip per Run, with the transient in a background worker so the UI stays responsive and *Stop* is a real abort. Larger circuits go to the Worker, where a dense solve does not block the tab and the math runs under a bounded work budget. Same math, same results, chosen automatically by size.
+**One engine, two homes.** The solver is a single module that runs **unchanged** in the browser *and* on the Worker. Any circuit up to 30 nodes is solved right in the page - no network round-trip per Run, with the transient in a background worker so the UI stays responsive and *Stop* is a real abort. Larger circuits go to the Worker, where a heavy solve does not block the tab and the math runs under a bounded work budget. Same math, same results, chosen automatically by size.
 
 **The digital exception.** Purely **digital** circuits (logic gates only, no analog) skip the numerical solver entirely and evaluate as **boolean logic in the browser** - there are no differential equations to integrate, just truth tables and clocked state. This keeps digital-logic labs instant and interactive.
 
@@ -40,9 +40,9 @@ The single most important decision in the system:
 At the core is a SPICE-style numerical engine:
 
 - **Modified Nodal Analysis (MNA)** assembles a system of equations directly from the netlist - one unknown per node voltage, plus branch currents for sources and inductors.
-- **Linear systems** are solved by dense Gaussian elimination.
+- **Linear systems** are solved by a sparse LU factorization. The pivot order is chosen once per circuit, to keep fill-in small, and reused on every later solve - so a Newton iteration or a time step only refactors, the way SPICE does it.
 - **Nonlinear devices** - diodes, BJTs, MOSFETs, JFETs, op-amps - are linearized and solved by **Newton-Raphson iteration**, with GMIN stepping and voltage limiting to keep tough circuits converging instead of diverging.
-- **Transient analysis** steps through time, replacing capacitors and inductors with companion models at each step.
+- **Transient analysis** steps through time, replacing capacitors and inductors with companion models at each step. The step is variable: it shrinks where the waveform bends, grows back where it is smooth, and lands exactly on every edge of every source - while the output stays on the uniform grid the instruments read.
 - **Small-signal analyses** linearize around the DC operating point: AC / Bode, **noise**, the **transfer function** (gain, input and output resistance) and **pole-zero**.
 - On top of those: **parameter sweeps**, **Monte-Carlo** tolerance runs (every R, C and L drawn inside its tolerance), and **Fourier / THD** of a transient, laid out the way SPICE prints it.
 
@@ -51,6 +51,18 @@ Devices are modelled the way SPICE models them - Gummel-Poon BJTs; MOSFETs with 
 **Held to a reference.** A simulator that only agrees with itself proves nothing, so the engine is checked against **ngspice**, the open-source reference: tests compare it against golden ngspice output for SPICE export, noise, transfer function, pole-zero and Fourier, and differential fuzzers generate random circuits, run them through both simulators and flag any disagreement.
 
 None of the theory is secret - it's the well-understood mathematics behind every SPICE simulator. The value is in getting it robust, accurate, and wrapped in a product that teaches.
+
+---
+
+## The canvas: what looks connected is connected
+
+The netlist joins wires at their **ends** only, so a schematic can lie: a wire that merely crosses another, or ends on the middle of one, looks joined and is not. The editor is built so the drawing cannot say anything the simulator does not do:
+
+- a **junction dot** appears only where three or more connections meet, by the very rule the netlist uses - never on a plain bend or a wire touching a pin;
+- a wire end, a route corner or a pin landing on the middle of a wire **splits it into a real T**;
+- new wires are **routed orthogonally**, leaving a pin along its own axis and steering around parts, and the preview is exactly the route that is saved;
+- every pin sits at the **tip of its drawn lead**, so a wire attaches where the student aims;
+- a wire is **one object** - a click selects every segment up to the next pin or junction - and the rule check reports a dangling end by the same rule the dots use.
 
 ---
 
@@ -90,7 +102,7 @@ The same "learn by doing, then get verified" loop drives the **graded labs** - e
 |-------|-----------|
 | **Client** | Vanilla ES6 modules + HTML5 Canvas (no framework) |
 | **Server** | Cloudflare Worker - Hono framework, TypeScript |
-| **Solver** | Dense MNA + Newton-Raphson (isomorphic client/server), held to ngspice |
+| **Solver** | MNA with a sparse LU + Newton-Raphson, variable-step transient (isomorphic client/server), held to ngspice |
 | **Hardware** | Web Serial → the OHM2ENG USB card, its own firmware |
 | **Hosting** | Cloudflare Pages + Worker |
 | **i18n** | Hebrew / English |

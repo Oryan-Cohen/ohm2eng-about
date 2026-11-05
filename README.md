@@ -71,8 +71,8 @@ OHM2ENG does two big things in the browser, and a third that reaches outside it:
 
 The browser owns the circuit - it draws it, edits it, and turns it into a netlist. Where the *numbers* come from is a separate, swappable layer, and the exercise's grader never knows which one answered:
 
-1. **In the browser - the default.** The solver, a dense **Modified Nodal Analysis (MNA)** engine with **Newton-Raphson** iteration and full device models, is one module that also ships to the client. Any circuit of up to 30 nodes is solved right in the page - the transient in a background worker, so the UI stays responsive and *Stop* really stops. No network round-trip per Run.
-2. **On the server - large circuits.** Above that, the very same engine runs in a Cloudflare Worker, where a dense solve does not block the tab, under a bounded work budget.
+1. **In the browser - the default.** The solver, a **Modified Nodal Analysis (MNA)** engine with a sparse LU, **Newton-Raphson** iteration and full device models, is one module that also ships to the client. Any circuit of up to 30 nodes is solved right in the page - the transient in a background worker, so the UI stays responsive and *Stop* really stops. No network round-trip per Run.
+2. **On the server - large circuits.** Above that, the very same engine runs in a Cloudflare Worker, where a heavy solve does not block the tab, under a bounded work budget.
 3. **On a real breadboard - optional.** With the OHM2ENG card attached, real measurements fill the exact context the solver would have filled (see below).
 
 Purely digital circuits skip the analog solver altogether and evaluate as boolean logic in the browser.
@@ -118,7 +118,7 @@ All of it over the one cable that also powers the card - no bench supply, no dri
 |-------|-----------|
 | **Client** | Vanilla ES6 modules + HTML5 Canvas (no framework) |
 | **Server** | Cloudflare Worker - Hono framework, TypeScript |
-| **Solver** | Dense MNA + Newton-Raphson (~21,700 lines, isomorphic client/server), held to ngspice |
+| **Solver** | MNA with a sparse LU + Newton-Raphson, variable-step transient (~21,700 lines, isomorphic client/server), held to ngspice |
 | **Hardware** | Web Serial → the OHM2ENG USB card, its own firmware |
 | **Hosting** | Cloudflare Pages + Worker |
 | **i18n** | Hebrew / English |
@@ -132,6 +132,7 @@ All of it over the one cable that also powers the card - no bench supply, no dri
 - **Held to ngspice** - golden-output tests for SPICE export, noise, transfer function, pole-zero and Fourier, plus differential fuzzers that run random circuits through both simulators
 - Real device physics: Gummel-Poon BJTs, MOSFETs (smooth subthreshold channel, body diode, datasheet capacitances), diodes and JFETs with junction capacitance, thyristors, op-amps (soft saturation + oscillator modes)
 - Six draggable virtual instruments with FFT, Bode, and cursor measurements
+- **EDA-style wiring** - orthogonal auto-routing around parts, a junction dot only where three or more connections meet, real T-joins, and a wire selected as one object: what looks connected is connected
 - **Graded labs** - 28 experiments, 150 sections, each checked against the student's own circuit
 - **Comprehensive computer-architecture course** - 126 levels in 13 projects; its first part builds a computer from a single NAND gate up (Hack / VM / Jack), then it extends well beyond into RISC-V, datapath & control, pipelining, caches, and virtual memory; student code is actually executed and graded, not pattern-matched
 - **Job-interview prep** - a career center of graded EE/CS questions
